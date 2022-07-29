@@ -8,9 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var remoteConfigState = RemoteConfigState()
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack {
+            if remoteConfigState.isUnderMaintenance {
+                ZStack {
+                    Rectangle()
+                        .fill(.yellow)
+                        .ignoresSafeArea()
+                    Text(remoteConfigState.maintenanceMessage)
+                }
+            } else {
+                Text("Status is normal.")
+            }
+            
+            if remoteConfigState.isFetchAndActivating {
+                ZStack {
+                    Rectangle()
+                        .fill(.gray.opacity(0.8))
+                        .ignoresSafeArea()
+                    Text("Loading...")
+                }
+            }
+        }
     }
 }
 
