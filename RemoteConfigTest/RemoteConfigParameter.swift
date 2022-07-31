@@ -21,8 +21,9 @@ struct RemoteConfigParameter {
 
     /// Remote Configのパラメータタイプ
     enum ParameterType: String, CaseIterable {
-        case isUnderMaintenance
-        case maintenanceMessage
+        case title
+        case message
+        case imageUrl
 
         var key: String {
             return self.rawValue
@@ -31,31 +32,40 @@ struct RemoteConfigParameter {
         var defaultValue: NSObject {
 
             switch self {
-            case .isUnderMaintenance:
-                return false as NSObject
-            case .maintenanceMessage:
-                return "メンテナンス中" as NSObject
+            case .title:
+                return "タイトル" as NSObject
+            case .message:
+                return "メッセージ" as NSObject
+            case .imageUrl:
+                return "https://beiz.jp/images_P/wallpaper/wallpaper_00458.jpg" as NSObject
             }
         }
     }
 
-    /// メンテナンス中かどうか
-    var isUnderMaintenance: Bool {
+    var title: String {
         do {
-            return try decodedValue(.isUnderMaintenance)
+            return try decodedValue(.title)
         }
         catch {
-            return ParameterType.isUnderMaintenance.defaultValue as! Bool
+            return ParameterType.title.defaultValue as! String
         }
     }
 
-    /// メンテナンスメッセージ
-    var maintenanceMessage: String {
+    var message: String {
         do {
-            return try decodedValue(.maintenanceMessage)
+            return try decodedValue(.message)
         }
         catch {
-            return ParameterType.maintenanceMessage.defaultValue as! String
+            return ParameterType.message.defaultValue as! String
+        }
+    }
+
+    var imageUrl: String {
+        do {
+            return try decodedValue(.imageUrl)
+        }
+        catch {
+            return ParameterType.imageUrl.defaultValue as! String
         }
     }
 
@@ -67,9 +77,11 @@ struct RemoteConfigParameter {
     private func decodedValue<T>(_ parameter: ParameterType) throws -> T {
 
         switch parameter {
-        case .isUnderMaintenance:
-            return try remoteConfig[parameter.key].decoded(asType: Bool.self) as! T
-        case .maintenanceMessage:
+        case .title:
+            return try remoteConfig[parameter.key].decoded(asType: String.self) as! T
+        case .message:
+            return try remoteConfig[parameter.key].decoded(asType: String.self) as! T
+        case .imageUrl:
             return try remoteConfig[parameter.key].decoded(asType: String.self) as! T
         }
     }

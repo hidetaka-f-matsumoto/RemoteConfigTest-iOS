@@ -13,17 +13,26 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            if remoteConfigState.isUnderMaintenance {
-                ZStack {
-                    Rectangle()
-                        .fill(.yellow)
-                        .ignoresSafeArea()
-                    Text(remoteConfigState.maintenanceMessage)
-                }
-            } else {
-                Text("Status is normal.")
+            VStack(alignment: .leading) {
+                Text(remoteConfigState.title)
+                    .font(.title)
+                AsyncImage(
+                    url: remoteConfigState.imageUrl,
+                    content: { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(
+                                maxWidth: UIScreen.main.bounds.width,
+                                maxHeight: 240)
+                    },
+                    placeholder: {
+                        ProgressView()
+                    })
+                Text(remoteConfigState.message)
+                    .font(.subheadline)
             }
-            
+            .padding()
+
             if remoteConfigState.isFetchAndActivating {
                 ZStack {
                     Rectangle()

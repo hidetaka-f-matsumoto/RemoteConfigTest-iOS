@@ -30,12 +30,16 @@ class RemoteConfigState: ObservableObject {
         fetchAndActive()
     }
 
-    var isUnderMaintenance: Bool {
-        return remoteConfigParameter.isUnderMaintenance
+    var title: String {
+        return remoteConfigParameter.title
     }
 
-    var maintenanceMessage: String {
-        return remoteConfigParameter.maintenanceMessage
+    var message: String {
+        return remoteConfigParameter.message
+    }
+
+    var imageUrl: URL? {
+        return URL(string: remoteConfigParameter.imageUrl)
     }
 
     /// RemoteConfigの値をfetchしてactivateする
