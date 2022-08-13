@@ -14,10 +14,10 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
-                Text(remoteConfigState.title)
+                Text(remoteConfigState.pickupArticle.title)
                     .font(.title)
                 AsyncImage(
-                    url: remoteConfigState.imageUrl,
+                    url: URL(string: remoteConfigState.pickupArticle.imageUrl),
                     content: { image in
                         image.resizable()
                             .aspectRatio(contentMode: .fill)
@@ -28,7 +28,7 @@ struct ContentView: View {
                     placeholder: {
                         ProgressView()
                     })
-                Text(remoteConfigState.message)
+                Text(remoteConfigState.pickupArticle.message)
                     .font(.subheadline)
             }
             .padding()

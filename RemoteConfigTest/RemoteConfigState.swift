@@ -30,16 +30,9 @@ class RemoteConfigState: ObservableObject {
         fetchAndActive()
     }
 
-    var title: String {
-        return remoteConfigParameter.title
-    }
-
-    var message: String {
-        return remoteConfigParameter.message
-    }
-
-    var imageUrl: URL? {
-        return URL(string: remoteConfigParameter.imageUrl)
+    var pickupArticle: Article {
+        let data = remoteConfigParameter.pickupArticle.data(using: .utf8)!
+        return try! JSONDecoder().decode(Article.self, from: data)
     }
 
     /// RemoteConfigの値をfetchしてactivateする
