@@ -7,14 +7,25 @@
 
 import SwiftUI
 import FirebaseCore
+import FirebaseInstallations
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+      
+        Installations.installations().installationID { (id, error) in
+            if let error = error {
+                print("Error fetching id: \(error)")
+                return
+            }
+            guard let id = id else { return }
+            CurrentUser.shared.instanceId = id
+            print("Installation ID: \(id)")
+        }
 
-    return true
-  }
+        return true
+    }
 }
 
 @main

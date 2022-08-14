@@ -10,6 +10,8 @@
 		04541C5C28A73988003C07C4 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04541C5B28A73988003C07C4 /* Article.swift */; };
 		04541C5F28A7B50A003C07C4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 04541C5E28A7B50A003C07C4 /* FirebaseAnalytics */; };
 		04541C6128A7B50A003C07C4 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 04541C6028A7B50A003C07C4 /* FirebaseAnalyticsSwift */; };
+		04541C6428A7C870003C07C4 /* FirebaseInstallations in Frameworks */ = {isa = PBXBuildFile; productRef = 04541C6328A7C870003C07C4 /* FirebaseInstallations */; };
+		04541C6628A90AC9003C07C4 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04541C6528A90AC9003C07C4 /* CurrentUser.swift */; };
 		049F27F528917E82008972AF /* RemoteConfigTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F27F428917E82008972AF /* RemoteConfigTestApp.swift */; };
 		049F27F728917E82008972AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049F27F628917E82008972AF /* ContentView.swift */; };
 		049F27F928917E83008972AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 049F27F828917E83008972AF /* Assets.xcassets */; };
@@ -23,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		04541C5B28A73988003C07C4 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		04541C6528A90AC9003C07C4 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		049F27F128917E82008972AF /* RemoteConfigTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteConfigTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		049F27F428917E82008972AF /* RemoteConfigTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigTestApp.swift; sourceTree = "<group>"; };
 		049F27F628917E82008972AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +45,7 @@
 				049F280428918AC2008972AF /* FirebaseRemoteConfig in Frameworks */,
 				049F280628918AC2008972AF /* FirebaseRemoteConfigSwift in Frameworks */,
 				04541C5F28A7B50A003C07C4 /* FirebaseAnalytics in Frameworks */,
+				04541C6428A7C870003C07C4 /* FirebaseInstallations in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +79,7 @@
 				049F28092892C93A008972AF /* RemoteConfigState.swift */,
 				049F280D2892CDF2008972AF /* GoogleService-Info.plist */,
 				04541C5B28A73988003C07C4 /* Article.swift */,
+				04541C6528A90AC9003C07C4 /* CurrentUser.swift */,
 			);
 			path = RemoteConfigTest;
 			sourceTree = "<group>";
@@ -108,6 +113,7 @@
 				049F280528918AC2008972AF /* FirebaseRemoteConfigSwift */,
 				04541C5E28A7B50A003C07C4 /* FirebaseAnalytics */,
 				04541C6028A7B50A003C07C4 /* FirebaseAnalyticsSwift */,
+				04541C6328A7C870003C07C4 /* FirebaseInstallations */,
 			);
 			productName = RemoteConfigTest;
 			productReference = 049F27F128917E82008972AF /* RemoteConfigTest.app */;
@@ -140,6 +146,7 @@
 			packageReferences = (
 				049F280228918AC2008972AF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				04541C5D28A7B50A003C07C4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				04541C6228A7C870003C07C4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 049F27F228917E82008972AF /* Products */;
 			projectDirPath = "";
@@ -172,6 +179,7 @@
 				049F280A2892C93A008972AF /* RemoteConfigState.swift in Sources */,
 				04541C5C28A73988003C07C4 /* Article.swift in Sources */,
 				049F27F528917E82008972AF /* RemoteConfigTestApp.swift in Sources */,
+				04541C6628A90AC9003C07C4 /* CurrentUser.swift in Sources */,
 				049F28082892C853008972AF /* RemoteConfigParameter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +391,14 @@
 				kind = branch;
 			};
 		};
+		04541C6228A7C870003C07C4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		049F280228918AC2008972AF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -403,6 +419,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04541C5D28A7B50A003C07C4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsSwift;
+		};
+		04541C6328A7C870003C07C4 /* FirebaseInstallations */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04541C5D28A7B50A003C07C4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseInstallations;
 		};
 		049F280328918AC2008972AF /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;

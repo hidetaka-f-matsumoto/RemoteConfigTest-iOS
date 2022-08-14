@@ -14,7 +14,8 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
-                Text("こんにちは 1 さん")
+                Text("Your Instance ID: \(CurrentUser.shared.instanceId)")
+                    .font(.subheadline)
                     .padding()
                 Text(remoteConfigState.pickupArticle.title)
                     .font(.title)
